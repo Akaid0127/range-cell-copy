@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './App.module.css';
-import { Button, Table } from 'antd';
+import { Button, message, Table } from 'antd';
+import axios from 'axios';
 
 const defaultTableColumns = [
   { title: 'Name', dataIndex: 'name', key: 'name', width: 100 },
@@ -12,8 +13,25 @@ const defaultTableColumns = [
 ];
 
 const App: React.FC = () => {
+  useEffect(() => {}, []);
+
   // 获取数据
-  const handleGetData = () => {};
+  const handleGetData = () => {
+    axios
+      .get('/table/list')
+      .then((res: any) => {
+        console.log(res);
+        if (res.status === 200) {
+          const resData = res.data.list;
+          console.log(resData);
+        } else {
+          message.error(res.message);
+        }
+      })
+      .catch(error => {
+        message.error(error.message);
+      });
+  };
 
   // 清空数据
   const handleClearData = () => {};
