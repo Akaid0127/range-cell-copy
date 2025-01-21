@@ -1,0 +1,13 @@
+.rangeCopyWrapper {
+  width: 800px;
+  height: 100%;
+  margin: 16px auto;
+}
+
+.rangeCopyWrapper .optContent {
+  margin-bottom: 8px;
+}
+
+.rangeCopyWrapper .optContent button + button {
+  margin-left: 8px;
+}
